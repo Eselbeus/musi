@@ -3,37 +3,37 @@ module Musi
   class Note
 
     @@sharp_notes = {
-      "C" => 1,
-      "C#" => 2,
-      "D" => 3,
-      "D#" => 4,
-      "E" => 5,
-      "F" => 6,
-      "F#" => 7,
-      "G" => 8,
-      "G#" => 9,
-      "A" => 10,
-      "A#" => 11,
-      "B" => 12
+      "C" => 0,
+      "C#" => 1,
+      "D" => 2,
+      "D#" => 3,
+      "E" => 4,
+      "F" => 5,
+      "F#" => 6,
+      "G" => 7,
+      "G#" => 8,
+      "A" => 9,
+      "A#" => 10,
+      "B" => 11
     }
     @@flat_notes = {
-      "C" => 1,
-      "Db" => 2,
-      "D" => 3,
-      "Eb" => 4,
-      "E" => 5,
-      "F" => 6,
-      "Gb" => 7,
-      "G" => 8,
-      "Ab" => 9,
-      "A" => 10,
-      "Bb" => 11,
-      "B" => 12
+      "C" => 0,
+      "Db" => 1,
+      "D" => 2,
+      "Eb" => 3,
+      "E" => 4,
+      "F" => 5,
+      "Gb" => 6,
+      "G" => 7,
+      "Ab" => 8,
+      "A" => 9,
+      "Bb" => 10,
+      "B" => 11
     }
 
     #Helper Method for lowering intervals that go below C
     def self.above_zero(next_note)
-      if next_note < 1
+      if next_note < 0
         next_note += 12
       else
         next_note

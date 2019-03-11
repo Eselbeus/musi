@@ -17,6 +17,12 @@ RSpec.describe Musi::Note do
   end
 end
 
+RSpec.describe Musi::Note do
+  it "raises a note by a half step" do
+    expect(Musi::Note.sharp("A#")). to eql("B")
+  end
+end
+
 #flat
 RSpec.describe Musi::Note do
   it "lowers a note by half step" do
