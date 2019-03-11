@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 module Musi
   class Note
     @@sharp_notes = {
@@ -30,7 +30,7 @@ module Musi
       "B" => 12
     }
 
-    
+
     #Helper Method for lowering intervals
     def self.above_zero(next_note)
       if next_note < 1
@@ -111,5 +111,7 @@ module Musi
         end
       end
     end
+
   end
+
 end
