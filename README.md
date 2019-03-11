@@ -2,6 +2,8 @@
 
 Welcome to Musi! A very basic gem for calculating intervals in music theory. Pass a note as a string such as "C" or "Ab" to a method and receive a new note in the form of a string.
 
+You may sharp or flat a note or raise by perfect 4th and 5th intervals. Minor/Major intervals not yet supported.
+
 
 ## Installation
 
@@ -23,14 +25,19 @@ Or install it yourself as:
 
 .sharp is a method which will raise the input of a note given as a string by one half step
 .flat is a a method which will lower the input of a note given as a string by one half step
+.raise_whole_step raises a note by a whole step
+.lower_whole_step lowers a note by a whole step
+.raiseP4 raises a note by a perfect fourth
+.lowerP4 lowers a note by a perfect fourth
 .raiseP5 raises a note by a perfect fifth
 .lowerP5 lowers a note by a perfect fifth
 
 Musi::Note.sharp("D") => D#
 
 Enharmonic spellings such as B# and Gx are currently not supported.
+.raise_whole_step("A#") will raise to "C"
 
-Currently only these 4 actions available.
+Currently only these 8 actions available.
 
 ## Development
 

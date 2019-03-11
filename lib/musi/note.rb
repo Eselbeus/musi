@@ -1,7 +1,6 @@
 # require 'pry'
 module Musi
   class Note
-    # attr_accessor :pitch
 
     @@sharp_notes = {
       "C" => 1,
@@ -31,11 +30,8 @@ module Musi
       "Bb" => 11,
       "B" => 12
     }
-    # def initialize(pitch)
-    #   @pitch = pitch
-    # end
 
-    #Helper Method for lowering intervals
+    #Helper Method for lowering intervals that go below C
     def self.above_zero(next_note)
       if next_note < 1
         next_note += 12
@@ -44,76 +40,96 @@ module Musi
       end
     end
 
-    def self.sharp(note)
+    #Helper method for raising(m2, M2, P4, P5)
+    def self.raise_helper(note, modifier)
       if note.include?("b")
-        next_note = (@@flat_notes[note] + 1) % 12
+        next_note = (@@flat_notes[note] + modifier) % 12
         @@flat_notes.keys.each do |k|
           if @@flat_notes[k] == next_note
             return k
           end
         end
       else
-        next_note = (@@sharp_notes[note] + 1) % 12
+        next_note = (@@sharp_notes[note] + modifier) % 12
         @@sharp_notes.keys.each do |k|
           if @@sharp_notes[k] == next_note
             return k
           end
         end
       end
+    end
+
+    def self.raise_helper_minor(note, modifier)
+      if !note.include?("#")
+        next_note = (@@flat_notes[note] + modifier) % 12
+        @@flat_notes.keys.each do |k|
+          if @@flat_notes[k] == next_note
+            return k
+          end
+        end
+      else
+        next_note = (@@sharp_notes[note] + modifier) % 12
+        @@sharp_notes.keys.each do |k|
+          if @@sharp_notes[k] == next_note
+            return k
+          end
+        end
+      end
+    end
+
+    #Helper method for lowering(m2, M2, P4, P5)
+    def self.lower_helper(note, modifier)
+      if note.include?("#")
+        next_note = (@@sharp_notes[note] - modifier) % 12
+        @@sharp_notes.keys.each do |k|
+          if @@sharp_notes[k] == self.above_zero(next_note)
+            return k
+          end
+        end
+      else
+        next_note = (@@flat_notes[note] - modifier)
+        @@flat_notes.keys.each do |k|
+          if @@flat_notes[k] == self.above_zero(next_note)
+            return k
+          end
+        end
+      end
+    end
+
+    #m2
+    def self.sharp(note)
+      self.raise_helper(note, 1)
     end
 
     def self.flat(note)
-      if note.include?("#")
-        next_note = (@@sharp_notes[note] - 1) % 12
-        @@sharp_notes.keys.each do |k|
-          if @@sharp_notes[k] == self.above_zero(next_note)
-            return k
-          end
-        end
-      else
-        next_note = (@@flat_notes[note] - 1)
-        @@flat_notes.keys.each do |k|
-          if @@flat_notes[k] == self.above_zero(next_note)
-            return k
-          end
-        end
-      end
+      self.lower_helper(note, 1)
     end
 
+    #M2
+    def self.raise_whole_step(note)
+      self.raise_helper(note, 2)
+    end
+
+    def self.lower_whole_step(note)
+      self.lower_helper(note, 2)
+    end
+
+    #M3
+    def self.raiseP4(note)
+      self.raise_helper_minor(note, 5)
+    end
+
+    def self.lowerP4(note)
+      self.lower_helper(note, 5)
+    end
+
+    #P5
     def self.raiseP5(note)
-      if note.include?("b")
-        next_note = (@@flat_notes[note] + 7) % 12
-        @@flat_notes.keys.each do |k|
-          if @@flat_notes[k] == next_note
-            return k
-          end
-        end
-      else
-        next_note = (@@sharp_notes[note] + 7) % 12
-        @@sharp_notes.keys.each do |k|
-          if @@sharp_notes[k] == next_note
-            return k
-          end
-        end
-      end
+      self.raise_helper(note, 7)
     end
 
     def self.lowerP5(note)
-      if note.include?("b")
-        next_note = (@@flat_notes[note] - 7) % 12
-        @@flat_notes.keys.each do |k|
-          if @@flat_notes[k] == self.above_zero(next_note)
-            return k
-          end
-        end
-      else
-        next_note = (@@sharp_notes[note] - 7) % 12
-        @@sharp_notes.keys.each do |k|
-          if @@sharp_notes[k] == self.above_zero(next_note)
-            return k
-          end
-        end
-      end
+      self.lower_helper(note, 7)
     end
 
   end
