@@ -1,6 +1,8 @@
 # require 'pry'
 module Musi
   class Note
+    attr_accessor :pitch
+    
     @@sharp_notes = {
       "C" => 1,
       "C#" => 2,
@@ -29,7 +31,9 @@ module Musi
       "Bb" => 11,
       "B" => 12
     }
-
+    def initialize(pitch)
+      @pitch = pitch
+    end
 
     #Helper Method for lowering intervals
     def self.above_zero(next_note)
