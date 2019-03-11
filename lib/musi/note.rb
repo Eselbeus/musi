@@ -59,23 +59,6 @@ module Musi
       end
     end
 
-    def self.raise_helper_minor(note, modifier)
-      if !note.include?("#")
-        next_note = (@@flat_notes[note] + modifier) % 12
-        @@flat_notes.keys.each do |k|
-          if @@flat_notes[k] == next_note
-            return k
-          end
-        end
-      else
-        next_note = (@@sharp_notes[note] + modifier) % 12
-        @@sharp_notes.keys.each do |k|
-          if @@sharp_notes[k] == next_note
-            return k
-          end
-        end
-      end
-    end
 
     #Helper method for lowering(m2, M2, P4, P5)
     def self.lower_helper(note, modifier)
@@ -114,9 +97,9 @@ module Musi
       self.lower_helper(note, 2)
     end
 
-    #M3
+    #P4
     def self.raiseP4(note)
-      self.raise_helper_minor(note, 5)
+      self.raise_helper(note, 5)
     end
 
     def self.lowerP4(note)
