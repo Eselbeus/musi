@@ -26,6 +26,8 @@ Or install it yourself as:
 .raiseP5 raises a note by a perfect fifth
 .lowerP5 lowers a note by a perfect fifth
 
+Musi::Note.sharp("D") => D#
+
 Enharmonic spellings such as B# and Gx are currently not supported.
 
 Currently only these 4 actions available.

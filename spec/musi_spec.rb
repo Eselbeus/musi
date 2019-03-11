@@ -25,6 +25,7 @@ RSpec.describe Musi::Note do
   end
 end
 
+
 RSpec.describe Musi::Note do
   it "raises C a P5" do
     expect(Musi::Note.raiseP5("C")). to eql("G")
