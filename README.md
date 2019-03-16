@@ -1,8 +1,10 @@
 # Musi
 
-Welcome to Musi! A very basic gem for calculating intervals in music theory. Pass a note as a string such as "C" or "Ab" to a method and receive a new note in the form of a string.
+Welcome to Musi 1.0.0! A very basic gem for calculating intervals in music theory. Pass a note as a string such as "C" or "Ab" to a method and receive a new note in the form of a string.
 
-You may sharp or flat a note or raise by perfect 4th and 5th intervals. Minor/Major intervals not yet supported.
+Musi 1.0.0 now allows a user to raise or lower a note by all major/minor and perfect intervals as well as tritones.
+
+Musi 1.0.0 updates Musi 0.1.2 which only had support for basic sharping, flatting, and raising and lowering by perfect fourths and fifths.
 
 
 ## Installation
@@ -23,21 +25,40 @@ Or install it yourself as:
 
 ## Usage
 
-.sharp is a method which will raise the input of a note given as a string by one half step
-.flat is a a method which will lower the input of a note given as a string by one half step
-.raise_whole_step raises a note by a whole step
-.lower_whole_step lowers a note by a whole step
-.raiseP4 raises a note by a perfect fourth
-.lowerP4 lowers a note by a perfect fourth
-.raiseP5 raises a note by a perfect fifth
-.lowerP5 lowers a note by a perfect fifth
+.sharp and .raisem2 are methods which both raise the input of a note given as a string by a minor 2nd interval
+.flat is a a method which will lower the input of a note given as a string by a minor 2nd
+.raise_whole_step and .raiseM2 raise a note by a major 2nd
+.lower_whole_step and .lowerM2 lower a note by a major 2nd
+
+Other methods included:
+.raisem3
+.lowerm3
+.raiseM3
+.lowerM3
+.raiseP4
+.lowerP4
+.raiseA4
+.lowerA4
+.raised5
+.lowerd5
+.raiseP5
+.lowerP5
+.raisem6
+.lowerm6
+.raiseM6
+.lowerM6
+.raisem7
+.lowerm7
+.raiseM7
+.lowerM7
+
+To use:
 
 Musi::Note.sharp("D") => D#
 
-Enharmonic spellings such as B# and Gx are currently not supported.
-.raise_whole_step("A#") will raise to "C"
+Enharmonic spellings such as B#, E# and Gx are currently not supported as input values, although spellings such as Cb and B# are valid output values.
 
-Currently only these 8 actions available.
+No support for augmented and diminished intervals yet aside from triones.
 
 ## Development
 
