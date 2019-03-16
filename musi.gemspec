@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["eselbeus@gmail.com"]
 
   spec.summary       = %q{Simple music theory gem}
-  spec.description   = %q{A gem for sharping/flattening notes and raising/lowering by perfect 5ths}
+  spec.description   = %q{A gem for raising and lowering musical notes as strings by major, minor, and perfect intervalsw}
   spec.homepage      = "https://github.com/Eselbeus/musi.git"
   spec.license       = "MIT"
 
